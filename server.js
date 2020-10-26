@@ -3,14 +3,14 @@ const express = require("express")
 const session = require("express-session")
 const cors = require("cors")
 const mongoose = require("mongoose")
-const app = require("express")
+const app = express()
 const db = mongoose.connection
 
 // Port
 const PORT = process.env.PORT || 3000
 
 //Database
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/" + "garden"
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:21017/" + "garden"
 require("dotenv").config()
 
 //Connect to Mongo
@@ -20,12 +20,10 @@ mongoose.connect(MONGODB_URI, {
     useCreateIndex: true,
 })
 
-//Error handling
+//Database connection listeners
 db.on("error", (err) => console.log(err.message + " is Mongod not running?"))
 db.on("connected", () => console.log("Mongo is connected at: " + MONGODB_URI))
 db.on("disconnected", () => console.log("Mongo disconnected"))
-
-//Open connection to mongo
 db.on("open", ()=>{})
 
 //Middleware
@@ -39,15 +37,15 @@ app.use(
 )
 
 //CORS requirements
-const whitelist = ["http://localhost:3000"]
+const whitelist = ["http://localhost:3000/"]
 const corsOptions = {
-    origin: function(origin, callback) {
+    origin: function (origin, callback) {
         if (whitelist.indexOf(origin) !== -1) {
             callback(null, true)
         } else {
-            callback(new Error("Not allowed by CORS"))
+            callback(new Error("Not allowed by CORS, sorry"))
         }
-    }
+    },
 }
 app.use(cors(corsOptions))
 
