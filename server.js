@@ -27,6 +27,7 @@ db.on("disconnected", () => console.log("Mongo disconnected"))
 db.on("open", ()=>{})
 
 //Middleware
+app.use(express.static("public"))
 app.use(express.json())
 app.use(
     session({
@@ -37,6 +38,10 @@ app.use(
 )
 
 //CORS requirements
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+});
 const whitelist = ["http://localhost:3000/"]
 const corsOptions = {
     origin: function (origin, callback) {
