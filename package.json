@@ -1,0 +1,29 @@
+{
+  "name": "garden-api",
+  "version": "1.0.0",
+  "description": "## Purpose This serves as the API for my digital garden. This is currently a work in progress and will be deployed with Heroku and built with: - Node.js - Express.js - MongoDB - Mongoose",
+  "main": "server.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.10.10"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/travissouthard/garden-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/travissouthard/garden-api/issues"
+  },
+  "homepage": "https://github.com/travissouthard/garden-api#readme"
+}
