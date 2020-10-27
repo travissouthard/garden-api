@@ -10,7 +10,7 @@ const db = mongoose.connection
 const PORT = process.env.PORT || 3000
 
 //Database
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:21017/" + "garden"
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/" + "garden"
 require("dotenv").config()
 
 //Connect to Mongo
