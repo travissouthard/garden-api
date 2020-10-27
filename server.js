@@ -33,24 +33,20 @@ app.use(
     session({
         secret: process.env.JWT_SECRET,
         resave: false,
-        saveUnitialized: false,
+        saveUninitialized: false,
     })
 )
 
 //CORS requirements
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    next();
-});
-const whitelist = ["http://localhost:3000/"]
-const corsOptions = {
+const whitelist = ['http://localhost:3000/'];
+var corsOptions = {
     origin: function (origin, callback) {
-        if (whitelist.indexOf(origin) !== -1) {
-            callback(null, true)
+        if (whitelist.indexOf(origin) !== -1 || !origin) {
+        callback(null, true)
         } else {
-            callback(new Error("Not allowed by CORS, sorry"))
+        callback(new Error('Not allowed by CORS'))
         }
-    },
+    }
 }
 app.use(cors(corsOptions))
 
