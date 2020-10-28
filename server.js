@@ -38,7 +38,7 @@ app.use(
 )
 
 //CORS requirements
-const whitelist = ['http://localhost:3000/'];
+const whitelist = ['http://localhost:3000'];
 var corsOptions = {
     origin: function (origin, callback) {
         if (whitelist.indexOf(origin) !== -1 || !origin) {
