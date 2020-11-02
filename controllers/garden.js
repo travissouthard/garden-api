@@ -4,9 +4,17 @@ const garden = express.Router()
 
 const Garden = require("../models/garden.js")
 
-////////
+
+//Data processor
+let processData = (data) => {
+    let tagsArray = data.tags.split(", ")
+    data.tags=tagsArray
+
+    return data
+}
+
+
 //Routes
-////////
 
 //Index
 garden.get("/", (req, res) => {
@@ -18,8 +26,9 @@ garden.get("/", (req, res) => {
     })
 })
 
-//New
+//New plot
 garden.post("/", (req, res) => {
+    req.body = processData(req.body)
     Garden.create(req.body, (err, createdPlot) => {
         if (err) {
             res.status(400).json({"Error": err.message})
