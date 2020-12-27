@@ -21,7 +21,7 @@ mongoose.connect(MONGODB_URI, {
 })
 
 //Database connection listeners
-db.on("error", (err) => console.log(err.message + " is Mongod not running?"))
+db.on("error", (err) => console.log(err.message))
 db.on("connected", () => console.log("Mongo is connected at: " + MONGODB_URI))
 db.on("disconnected", () => console.log("Mongo disconnected"))
 db.on("open", ()=>{})
